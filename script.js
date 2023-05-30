@@ -6,28 +6,33 @@ images.push('https://gratisography.com/wp-content/uploads/2023/05/gratisography-
 images.push('https://gratisography.com/wp-content/uploads/2023/05/gratisography-cool-colorful-door-free-stock-photo-800x525.jpg')
 images.push('https://gratisography.com/wp-content/uploads/2023/05/gratisography-party-balloons-free-stock-photo-800x525.jpg')
 
-let currentImage = 0
+let currentImageIndex = 0
 
 const slideImage = document.getElementById('slide-image')
-slideImage.src = images[currentImage]
+slideImage.src = images[currentImageIndex]
+prevBtn.disabled = true
 
 prevBtn.addEventListener('click', onShowPrevBtnClick )
 nextBtn.addEventListener('click', onShowNextBtnClick )
 
 
 
-
-
-
-
-
 function onShowPrevBtnClick() {
-  currentImage--
-  slideImage.src = images[currentImage]
+  currentImageIndex--
+  slideImage.src = images[currentImageIndex]
+  nextBtn.disabled = false
+  if(currentImageIndex ===  0) {
+    prevBtn.disabled = true
+    }
 }
 
 function onShowNextBtnClick() {
-  currentImage++
-  slideImage.src = images[currentImage]
+  currentImageIndex++
+  const slideImage = document.getElementById('slide-image')
+  slideImage.src = images[currentImageIndex]
+  prevBtn.disabled = false
+  if(currentImageIndex ===  images.length - 1) {
+    nextBtn.disabled = true
+    }
 }
 
