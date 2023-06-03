@@ -1,14 +1,16 @@
+
+
 const prevBtn = document.getElementById('show-prev-btn')
 const nextBtn = document.getElementById('show-next-btn')
-
+const slideImage = document.getElementById('slide-image')
 let images = []
+let currentImageIndex = 0
+
 images.push('https://gratisography.com/wp-content/uploads/2023/05/gratisography-retro-pastime-free-stock-photo-800x525.jpg')
 images.push('https://gratisography.com/wp-content/uploads/2023/05/gratisography-cool-colorful-door-free-stock-photo-800x525.jpg')
 images.push('https://gratisography.com/wp-content/uploads/2023/05/gratisography-party-balloons-free-stock-photo-800x525.jpg')
 
-let currentImageIndex = 0
 
-const slideImage = document.getElementById('slide-image')
 slideImage.src = images[currentImageIndex]
 prevBtn.disabled = true
 
@@ -17,7 +19,7 @@ nextBtn.addEventListener('click', onShowNextBtnClick )
 
 
 
-function onShowPrevBtnClick() {
+function onShowPrevBtnClick(event) {
   currentImageIndex--
   slideImage.src = images[currentImageIndex]
   nextBtn.disabled = false
@@ -26,7 +28,7 @@ function onShowPrevBtnClick() {
     }
 }
 
-function onShowNextBtnClick() {
+function onShowNextBtnClick(event) {
   currentImageIndex++
   const slideImage = document.getElementById('slide-image')
   slideImage.src = images[currentImageIndex]
